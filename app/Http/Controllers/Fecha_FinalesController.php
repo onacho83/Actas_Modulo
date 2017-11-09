@@ -36,4 +36,30 @@ class Fecha_FinalesController extends Controller
 
 
     }
+
+      public function edit($id)
+    {
+       // return "mostrar la ruta de edicion con id $id";
+        $fecha_final = Fecha_Final::find($id);
+        return view('admin.fecha_Finales.edit')->with(compact('fecha_final')); //formulario de registro
+    }
+     public function update(Request $request)
+    {
+        //registrar nueva fecha
+       // dd($request ->all());
+        $date = new Carbon($request->input('fecha_examen'));
+       
+        $date = $date->format('Y-m-d');
+
+
+        $fecha_final = new Fecha_Final();
+        $fecha_final->fecha_examen = $date;
+        $fecha_final->materia_id = $request->input('materia_id');
+        $fecha_final->acta_id = $request->input('acta_id');
+        $fecha_final->save(); //INSERT
+
+        return redirect('/admin/fecha_Finales');
+
+
+    }
 }
