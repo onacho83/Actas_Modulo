@@ -23,4 +23,10 @@ Route::post('/admin/fecha_Finales', 'Fecha_FinalesController@store'); //registra
 Route::get('/admin/fecha_Finales/{id}/edit', 'Fecha_FinalesController@edit'); //formulario
 Route::post('/admin/fecha_Finales/{id}/edit', 'Fecha_FinalesController@update'); //actualizar
 
+Route::get('/admin/Persona', 'PersonaController@index'); //listado
+Route::get('/admin/Persona/create', 'PersonaController@create'); //formulario
+Route::post('/admin/Persona', 'PersonaController@store'); //registrar
+Route::get('/admin/Persona/{id}/edit', 'PersonaController@edit'); //formulario
+Route::post('/admin/Persona/{id}/edit', 'PersonaController@update'); //actualizar
+
 
