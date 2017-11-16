@@ -44,7 +44,7 @@ class Fecha_FinalesController extends Controller
     }
 
 
-    public function update(Request $request,$id)
+    public function update(Request $request, $id)
     {
         //registrar nueva fecha
        // dd($request ->all());
@@ -59,7 +59,7 @@ class Fecha_FinalesController extends Controller
         $fecha_final->acta_id = $request->input('acta_id');
         $fecha_final->save(); //UPDATE
 
-        return redirect('/home');//volver a home
+        return redirect('/admin/fecha_Finales');//volver a home
 
 
     }

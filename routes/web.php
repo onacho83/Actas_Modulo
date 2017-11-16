@@ -21,6 +21,6 @@ Route::get('/admin/fecha_Finales', 'Fecha_FinalesController@index'); //listado
 Route::get('/admin/fecha_Finales/create', 'Fecha_FinalesController@create'); //formulario
 Route::post('/admin/fecha_Finales', 'Fecha_FinalesController@store'); //registrar
 Route::get('/admin/fecha_Finales/{id}/edit', 'Fecha_FinalesController@edit'); //formulario
-Route::post('/admin/fecha_Finales/{id}/edit', 'Fecha_FinalesController@store'); //actualizar
+Route::post('/admin/fecha_Finales/{id}/edit', 'Fecha_FinalesController@update'); //actualizar
 
 
