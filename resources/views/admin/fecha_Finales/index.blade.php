@@ -1,11 +1,19 @@
 @extends('layouts.app')
 
+@section('title', 'Actas')
+
+@section('body-class', 'product-page')
+
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Actas - Fechas Finales</div>
+<div class="header header-filter" style="background-image: url('https://www.coodex.es/wp-content/uploads/2014/08/diseno-paginas-web-alicante.jpg');">
+    </div>
+
+     <div class="main main-raised">
+        <div class="container">
+
+            <div class="section">
+                    <div class="panel-heading text-center"><h1>Actas</h1></div>
+                     
 
                 <div class="panel-body">
                     @if (session('status'))
@@ -13,7 +21,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                <a href="{{ url('/admin/fecha_Finales/create') }}" class="btn btn-primary btn-round">Agregar Fecha</a>
+                 <a href="{{ url('/admin/fecha_Finales/create') }}" <button class="btn btn-info"></button>>Agregar Fecha</a>
                     
                     <table class="table">
                         <thead>
@@ -35,15 +43,19 @@
                                 <td>{{ $fecha_Final ->acta_id }}</td>
                               
                                 <td class="td-actions text-right">
-                                    <button type="button" rel="tooltip" title="View Profile" class="btn btn-info btn-simple btn-xs">
-                                        <i class="fa fa-user"></i>
+                                  <form>
+                                    <button"{{url('/admin/finales_materia/'.$fecha_Final->id.'/index')}}" " rel="tooltip" title="Editar Fecha" class="btn btn-success btn-simple btn-xs">
+                                      <i class="material-icons">search</i>
                                     </button>
-                                    <a href="{{url('/admin/fecha_Finales/'.$fecha_Final->id.'/edit')}}" " rel="tooltip" title="Edit Profile" class="btn btn-success btn-simple btn-xs">
-                                        <i class="fa fa-edit"></i>
+                                    <a href="{{url('/admin/fecha_Finales/'.$fecha_Final->id.'/edit')}}" " rel="tooltip" title="Editar Fecha" class="btn btn-success btn-simple btn-xs">
+                                      <i class="material-icons">build</i>
                                     </a>
-                                    <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-                                        <i class="fa fa-times"></i>
+                                     <form method="post" action="{{ url('/admin/fecha_Finales/'.$fecha_Final->id.'/delete')}}">
+                                        {{ csrf_field() }}
+                                        <button type="submit" rel="tooltip" title="Borrar Fecha" class="btn btn-danger btn-simple btn-xs">
+                                       <i class="material-icons">delete_forever</i>
                                     </button>
+                                    </form>
                                 </td>
                             </tr>
                             @endforeach
@@ -54,4 +66,12 @@
                             </div>
                         </div>
                     </div>
+    <footer class="footer">
+        <div class="container">
+           
+           
+        </div>
+    </footer>
+
+</div>
 @endsection

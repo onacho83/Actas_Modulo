@@ -19,6 +19,21 @@ class Fecha_FinalesController extends Controller
     }
      public function store(Request $request)
     {
+        $fecha_examen= Carbon::now('America/Argentina/Buenos_Aires');
+        $messages=[
+                     'fecha_examen.required'=> 'Debe ingresar una fecha posterior a la de hoy',
+                     
+                     'materia_id.required'=> 'Debe ingresar un id de materia ',
+                     'acta_id.required'=> 'Debe ingresar id para el acta menos a 3 digitos'
+
+
+        ];
+        $rules= [
+                'fecha_examen'=>'required|date|after:tomorrow',
+                'materia_id'=> 'required',
+                'acta_id'=> 'required|numeric|min:1|max:99'
+        ];
+        $this->validate($request, $rules, $messages);
     	//registrar nueva fecha
        // dd($request ->all());
         $date = new Carbon($request->input('fecha_examen'));
@@ -44,22 +59,41 @@ class Fecha_FinalesController extends Controller
     }
 
 
-    public function update(Request $request, $id)
+    public function update(Request $request,$id)
     {
+        $fecha_examen= Carbon::now('America/Argentina/Buenos_Aires');
+         $messages=[
+                'fecha_examen.required'=> 'Debe ingresar una fecha posterior a la de hoy',
+                'materia_id.required'=> 'Debe ingresar un id de materia ',
+                'acta_id.required'=> 'Debe ingresar un acta'
+
+
+        ];
+        $rules= [
+                'fecha_examen'=> 'required|date|after:tomorrow',
+                'materia_id'=> 'required',
+                'acta_id'=> 'required|numeric|min:1'
+        ];
+        $this->validate($request, $rules, $messages);
         //registrar nueva fecha
        // dd($request ->all());
+       // $date= Carbon::now('America/Argentina/Buenos_Aires')-addDays(+1);
+
         $date = new Carbon($request->input('fecha_examen'));
-       
+        
         $date = $date->format('Y-m-d');//formato de fecha año-mes-dia
 
 
+
+        
         $fecha_final =Fecha_Final::find($id);
         $fecha_final->fecha_examen = $date;
+
         $fecha_final->materia_id = $request->input('materia_id');
         $fecha_final->acta_id = $request->input('acta_id');
         $fecha_final->save(); //UPDATE
 
-        return redirect('/admin/fecha_Finales');//volver a home
+        return redirect('/home');//volver a home
 
 
     }
