@@ -49,16 +49,6 @@
                                 <input class="datepicker form-control" type="string" name="fecha_examen" />
                                
 
-                                <script>
-    $(function() {
-        $( "#item_datepicker" ).datepicker({ 
-                         dateFormat:'dd/mm/yy',
-                         altFormat:'mm/dd/yy',
-                         altField:'#elotrocampo'
-            } );
-    });
-    </script>
-
 
                                 <div class="col-sm-4">
                                     <div class="form-group label-floating">

@@ -13,8 +13,29 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                <a href="{{ url('/admin/fecha_Finales/create') }}" class="btn btn-primary btn-round">Agregar Fecha</a>
-                    
+                <a href="{{ url('/admin/fecha_Finales/') }}" class="btn btn-primary btn-round">Agregar Fecha</a>
+                
+                <!-- panel importar -->
+                <div class="panel panel-default">
+                  <div class="panel-heading">Importar Archivo</div>
+                  <div class="panel-body">
+
+                    <form method="post" action="{{ url('/admin/fecha_Finales/import') }}" enctype="multipart/form-data">
+                        {{ csrf_field() }}
+
+                        <input type="file" name="archivo" required>
+                        
+                        <button type="submit" class="btn btn-primary btn-round" > Subir Archivo </button>
+                    </form>
+                   
+
+                  </div>
+                </div>
+                <hr> 
+
+
+
+                    <!-- Lista de Fechas Finales -->
                     <table class="table">
                         <thead>
                             <tr>

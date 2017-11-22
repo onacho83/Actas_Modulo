@@ -20,6 +20,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/admin/fecha_Finales', 'Fecha_FinalesController@index'); //listado
 Route::get('/admin/fecha_Finales/create', 'Fecha_FinalesController@create'); //formulario
 Route::post('/admin/fecha_Finales', 'Fecha_FinalesController@store'); //registrar
+
+Route::post('/admin/fecha_Finales/import', 'Fecha_FinalesController@import'); //registrar import
+
 Route::get('/admin/fecha_Finales/{id}/edit', 'Fecha_FinalesController@edit');
 Route::post('/admin/fecha_Finales/{id}/edit', 'Fecha_FinalesController@update');
 Route::post('/admin/fecha_Finales/{id}/delete', 'Fecha_FinalesController@destroy');

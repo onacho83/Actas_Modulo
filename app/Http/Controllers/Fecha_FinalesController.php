@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Fecha_Final;
 use Carbon\Carbon;
 
+use Excel;
+
 class Fecha_FinalesController extends Controller
 {
     public function index()
@@ -13,10 +15,16 @@ class Fecha_FinalesController extends Controller
     	$fecha_Finales=Fecha_Final::all();
     	return view('admin.fecha_Finales.index')->with(compact('fecha_Finales')); //listado
     }
+
+
      public function create()
     {
     	return view('admin.fecha_Finales.create'); //formulario de registro
     }
+
+
+
+
      public function store(Request $request)
     {
         $fecha_examen= Carbon::now('America/Argentina/Buenos_Aires');
@@ -35,7 +43,7 @@ class Fecha_FinalesController extends Controller
         ];
         $this->validate($request, $rules, $messages);
     	//registrar nueva fecha
-       // dd($request ->all());
+        dd($request ->all());
         $date = new Carbon($request->input('fecha_examen'));
        
         $date = $date->format('Y-m-d');
@@ -97,6 +105,52 @@ class Fecha_FinalesController extends Controller
 
 
     }
+
+    public function import(Request $request)
+        {
+
+        // guardar el archivo
+
+        // $file = $request->file('archivo');
+        // $path = public_path();
+        // $filename = uniqid() . $file->getClientOriginalName();
+        // $file->move($path, $filename);
+
+       //  //leer archivo
+
+        Excel::load('public/ifts12.xlsx', function($archivo)
+        {
+
+            $result=$archivo->get();
+
+            foreach ($result as $key => $value)
+            {
+
+                echo $value->materia_id.'<br>';
+
+            // $fecha_final->fecha_examen = $value->fecha_examen;
+            // $fecha_final->materia_id = $value->materia_id;
+            // $fecha_final->acta_id = $value->acta_id;
+            // $fecha_final->save(); //INSERT
+
+            }
+        })->get();
+        }
+
+       //  dd(Excel::load($file, function($reader) {
+ 
+       //       foreach ($reader->get() as $book) {
+       //       Book::create([
+       //       'Fecha_Final' => $book->Fecha_Final,
+       //       'materia_id' =>$book->materia_id,
+       //       'acta_id' =>$book->acta_id
+       //       ]);
+       // }
+       // }));
+  
+       //  dd(Book::all());
+    
+    
 
 
     public function destroy($id){
