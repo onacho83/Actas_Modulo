@@ -21,8 +21,29 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                 <a href="{{ url('/admin/fecha_Finales/create') }}" <button class="btn btn-info"></button>>Agregar Fecha</a>
+                 
                     
+                           <!-- panel importar -->
+                <div class="panel panel-default">
+                  <div class="panel-heading">Importar Archivo</div>
+                  <div class="panel-body">
+
+                    <form method="post" action="{{ url('/admin/fecha_Finales/import') }}" enctype="multipart/form-data">
+                        {{ csrf_field() }}
+
+                        <input type="file" name="archivo" required>
+                        
+                        <button type="submit" class="btn btn-primary btn-round" > Subir Archivo </button>
+                        <a href="{{ url('/admin/fecha_Finales/create') }}" <button class="btn btn-info"></button>>Agregar Fecha</a>
+                    </form>
+                   
+
+                  </div>
+                </div>
+                <hr> 
+
+
+
                     <table class="table">
                         <thead>
                             <tr>
