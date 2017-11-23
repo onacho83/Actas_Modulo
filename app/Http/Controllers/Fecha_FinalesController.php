@@ -43,7 +43,7 @@ class Fecha_FinalesController extends Controller
         ];
         $this->validate($request, $rules, $messages);
     	//registrar nueva fecha
-        dd($request ->all());
+        
         $date = new Carbon($request->input('fecha_examen'));
        
         $date = $date->format('Y-m-d');
@@ -141,8 +141,9 @@ class Fecha_FinalesController extends Controller
     
 
 
-    public function destroy($id){
-
+    public function destroy(Request $request, $id){
+        return 'borrado';
+        dd($request ->all());
         $fecha_Final=fecha_Final::find($id);
         $fecha_Final->delete();//eliminar registro
         return back();

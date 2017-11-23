@@ -50,7 +50,7 @@
                                
 
 
-                                <div class="col-sm-4">
+                               <div class="col-sm-4">
                                     <div class="form-group label-floating">
                                         <label class="control-label">Materia ID</label>
                                         <input type="integer" class="form-control" name="materia_id" value="{{old('materia_id')}}">
