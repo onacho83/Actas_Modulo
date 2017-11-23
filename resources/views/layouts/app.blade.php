@@ -32,7 +32,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{{ url('/admin/fecha_Finales') }}">Ifts 12 - Actas - Fecha Finales</a>
+                <a class="navbar-brand" href="{{ url('/admin/fecha_Finales') }}">Ifts 12 - Fecha Finales</a>
             </div>
 
             <div class="collapse navbar-collapse" id="navigation-example">
