@@ -111,14 +111,14 @@ class Fecha_FinalesController extends Controller
 
         // guardar el archivo
 
-        // $file = $request->file('archivo');
-        // $path = public_path();
-        // $filename = uniqid() . $file->getClientOriginalName();
-        // $file->move($path, $filename);
+        $file = $request->file('archivo');
+        $path = public_path();
+        $filename = uniqid() . $file->getClientOriginalName();
+        $file->move($path, $filename);
 
-       //  //leer archivo
+        //leer archivo e importar archivo
 
-        Excel::load('public/ifts12.xlsx', function($archivo)
+        Excel::load($filename, function($archivo)
         {
 
             $result=$archivo->get();
@@ -126,30 +126,18 @@ class Fecha_FinalesController extends Controller
             foreach ($result as $key => $value)
             {
 
-                echo $value->materia_id.'<br>';
-
-            // $fecha_final->fecha_examen = $value->fecha_examen;
-            // $fecha_final->materia_id = $value->materia_id;
-            // $fecha_final->acta_id = $value->acta_id;
-            // $fecha_final->save(); //INSERT
+            // echo $value->fecha_examen.'<br>';
+            $fecha_final = new Fecha_Final();
+            $fecha_final->fecha_examen = $value->fecha_examen;
+            $fecha_final->materia_id = $value->materia_id;
+            $fecha_final->acta_id = $value->acta_id;
+            $fecha_final->save(); //INSERT
 
             }
         })->get();
+        return redirect('/admin/fecha_Finales');//volver a home
         }
 
-       //  dd(Excel::load($file, function($reader) {
- 
-       //       foreach ($reader->get() as $book) {
-       //       Book::create([
-       //       'Fecha_Final' => $book->Fecha_Final,
-       //       'materia_id' =>$book->materia_id,
-       //       'acta_id' =>$book->acta_id
-       //       ]);
-       // }
-       // }));
-  
-       //  dd(Book::all());
-    
     
 
 
