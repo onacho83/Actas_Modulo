@@ -64,14 +64,14 @@
                                 <td>{{ $fecha_Final ->acta_id }}</td>
                               
                                 <td class="td-actions text-right">
-                                  <form>
-                                    <button"{{url('/admin/finales_materia/'.$fecha_Final->id.'/index')}}" " rel="tooltip" title="Editar Fecha" class="btn btn-success btn-simple btn-xs">
-                                      <i class="material-icons">search</i>
-                                    </button>
-                                    <a href="{{url('/admin/fecha_Finales/'.$fecha_Final->id.'/edit')}}" " rel="tooltip" title="Editar Fecha" class="btn btn-success btn-simple btn-xs">
-                                      <i class="material-icons">build</i>
-                                    </a>
-                                     <form method="post" action="{{ url('/admin/fecha_Finales/'.$fecha_Final->id.'/delete')}}">
+                                     <form method="post" action="{{ url('/admin/fecha_Finales/'.$fecha_Final->id.'/delete') }}">
+                                        {{ csrf_field() }}
+                                      
+                                        <a href="{{url('/admin/fecha_Finales/'.$fecha_Final->id.'/edit')}}" " rel="tooltip" title="Editar Fecha" class="btn btn-success btn-simple btn-xs">
+                                          <i class="material-icons">build</i>
+                                        </a>
+                                    
+                                     <form method="post" action="{{ url('/admin/fecha_Finales/'.$fecha_Final->id.'/delete') }}">
                                         {{ csrf_field() }}
                                         <button type="submit" rel="tooltip" title="Borrar Fecha" class="btn btn-danger btn-simple btn-xs">
                                        <i class="material-icons">delete_forever</i>

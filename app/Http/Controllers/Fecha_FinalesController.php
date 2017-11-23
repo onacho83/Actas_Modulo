@@ -101,8 +101,7 @@ class Fecha_FinalesController extends Controller
         $fecha_final->acta_id = $request->input('acta_id');
         $fecha_final->save(); //UPDATE
 
-        return redirect('/home');//volver a home
-
+        return redirect('/admin/fecha_Finales');
 
     }
 
@@ -141,9 +140,8 @@ class Fecha_FinalesController extends Controller
     
 
 
-    public function destroy(Request $request, $id){
-        return 'borrado';
-        dd($request ->all());
+    public function destroy($id){
+        
         $fecha_Final=fecha_Final::find($id);
         $fecha_Final->delete();//eliminar registro
         return back();

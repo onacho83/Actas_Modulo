@@ -17,7 +17,7 @@
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
                         <div class="panel panel-default">
-                            <div class="panel-heading">Cambiar Datos</div>
+                            <div class="panel-heading">Cambiar Datos - "{{ $fecha_Final->id }}"</div>
                                   @if ($errors->any())
                  
                     <div class="alert alert-danger">
@@ -41,18 +41,10 @@
                                 {{ csrf_field() }}
 
                                 <!-- markup -->
-                                <input class="datepicker form-control" type="string" name="fecha_examen" />
+                                <input class="datepicker form-control" type="string" name="fecha_examen" value="{{old('materia_id', $fecha_Final->fecha_examen)}}"/>
                                
 
-                                <script>
-    $(function() {
-        $( "#item_datepicker" ).datepicker({ 
-                         dateFormat:'dd/mm/yy',
-                         altFormat:'mm/dd/yy',
-                         altField:'#elotrocampo'
-            } );
-    });
-    </script>
+                                
 
 
                                 <div class="col-sm-4">
