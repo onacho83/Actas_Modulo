@@ -24,6 +24,6 @@ class HomeController extends Controller
     public function index()
     {
         $fecha_Finales=Fecha_Final::all();
-        return view('home')->with(compact('fecha_Finales')); //listado
+        return view('/admin/fecha_Finales')->with(compact('fecha_Finales')); //listado
     }
 }

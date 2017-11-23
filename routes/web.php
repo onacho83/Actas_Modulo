@@ -15,7 +15,7 @@ Route::get('/', 'TestController@welcome');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'Fecha_FinalesController@index')->name('home');
 
 Route::get('/admin/fecha_Finales', 'Fecha_FinalesController@index'); //listado
 Route::get('/admin/fecha_Finales/create', 'Fecha_FinalesController@create'); //formulario

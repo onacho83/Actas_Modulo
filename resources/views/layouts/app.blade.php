@@ -32,12 +32,12 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{{ url('/') }}"></a>
+                <a class="navbar-brand" href="{{ url('/admin/fecha_Finales') }}">Ifts 12 - Fecha Finales</a>
             </div>
 
             <div class="collapse navbar-collapse" id="navigation-example">
                 <ul class="nav navbar-nav navbar-right">
-                    <!-- @guest
+                    @guest
                         <li><a href="{{ route('login') }}">Ingresar</a></li>
                         <li><a href="{{ route('register') }}">Registro</a></li>
                     @else
@@ -60,7 +60,7 @@
                                 </li>
                             </ul>
                         </li>
-                    @endguest -->
+                    @endguest
                     <!-- REDES SOCIALES
                     <li>
                         <a href="https://twitter.com/CreativeTim" target="_blank" class="btn btn-simple btn-white btn-just-icon">
