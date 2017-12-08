@@ -28,6 +28,15 @@
                   <div class="panel-heading">Importar Archivo</div>
                   <div class="panel-body">
 
+                    <form method="post" action="{{ url('/admin/fecha_Finales/importcsv') }}" enctype="multipart/form-data">
+                        {{ csrf_field() }}
+
+                        <input type="file" name="archivoCsv" required>
+                        
+                        <button type="submit" class="btn btn-primary btn-round" > Subir Archivo CSV </button>
+                       
+                    </form>
+
                     <form method="post" action="{{ url('/admin/fecha_Finales/import') }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
 
@@ -36,11 +45,15 @@
                         <button type="submit" class="btn btn-primary btn-round" > Subir Archivo </button>
                         <a href="{{ url('/admin/fecha_Finales/create') }}" <button class="btn btn-info"></button>>Agregar Fecha</a>
                     </form>
+
+                  
                    
 
                   </div>
                 </div>
                 <hr> 
+
+
 
 
 

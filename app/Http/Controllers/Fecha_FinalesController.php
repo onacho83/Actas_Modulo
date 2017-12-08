@@ -5,11 +5,18 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Fecha_Final;
 use Carbon\Carbon;
+use DateTime;
+
 
 use Excel;
 
 class Fecha_FinalesController extends Controller
 {
+       public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index()
     {
     	$fecha_Finales=Fecha_Final::all();
@@ -137,7 +144,31 @@ class Fecha_FinalesController extends Controller
         return redirect('/admin/fecha_Finales');//volver a home
         }
 
-    
+
+        public function importcsv(Request $request)
+        {
+            $file = $request->file('archivoCsv');
+
+            $file = fopen($file,"r");
+          
+           while(! feof($file))
+              {
+               $datos=fgetcsv($file, 0 ,  ";" ,'"', "\n" );
+               if (trim($datos[0]) != '') {
+        
+               
+               $fecha=Carbon::createFromFormat('d/m/Y',$datos[4]);
+               
+                $fecha_final = new Fecha_Final();
+                $fecha_final->fecha_examen = $fecha;
+                $fecha_final->materia_id = substr($datos[1], -2);
+                $fecha_final->acta_id = $datos[0];
+                $fecha_final->save(); //INSERT
+              }
+            }
+            fclose($file);
+         
+        }
 
 
     public function destroy($id){

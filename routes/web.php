@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', 'TestController@welcome');
+Route::get('/', 'Fecha_FinalesController@index');
 
-Auth::routes();
+Auth::routes('/');
 
 Route::get('/home', 'Fecha_FinalesController@index')->name('home');
 
@@ -22,6 +22,7 @@ Route::get('/admin/fecha_Finales/create', 'Fecha_FinalesController@create'); //f
 Route::post('/admin/fecha_Finales', 'Fecha_FinalesController@store'); //registrar
 
 Route::post('/admin/fecha_Finales/import', 'Fecha_FinalesController@import'); //registrar import
+Route::post('/admin/fecha_Finales/importcsv', 'Fecha_FinalesController@importcsv'); //registrar import csv
 
 Route::get('/admin/fecha_Finales/{id}/edit', 'Fecha_FinalesController@edit');
 Route::post('/admin/fecha_Finales/{id}/edit', 'Fecha_FinalesController@update');
